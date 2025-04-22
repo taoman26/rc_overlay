@@ -31,11 +31,11 @@
     top: 42px;
 }
 
-/* Y軸スティックのポインター位置設定 */
-.custom .triggers .stick.left {
+/* スロットルのポインター設定 - Y軸のみ反映 */
+.custom .triggers .stick {
     left: 50% !important;
-    /* 縦方向の動きのみ許可、横方向は固定 */
-    /* スロットルにはスティックのY軸の動きを反映 */
+    transform: translateX(-50%) !important; /* X軸を完全に固定 */
+    /* Y軸は自動的に反映される */
 }
 
 /* ステアリングゲージのポインター設定 - 右側に配置 */
@@ -45,11 +45,11 @@
     top: 100px;
 }
 
-/* X軸スティックのポインター位置設定 */
-.custom .sticks .stick.right {
+/* ステアリングのポインター設定 - X軸のみ反映 */
+.custom .sticks .stick {
     top: 50% !important;
-    /* 横方向の動きのみ許可、縦方向は固定 */
-    /* ステアリングにはスティックのX軸の動きを反映 */
+    transform: translateY(-50%) !important; /* Y軸を完全に固定 */
+    /* X軸は自動的に反映される */
 }
 
 .custom .bumper:after,
