@@ -14,24 +14,45 @@
     transition: none;
 }
 
+/* ▶ 元の stick を透明にして非表示化 */
 .custom .stick {
     width: 20px;
     height: 20px;
-    background: #fd1601;
+    background: transparent !important;
     display: inline-block;
     position: absolute;
     border-radius: 10px;
+    z-index: 0;
 }
 
-/* ▼ スティック方向をCSSで制御 */
-.custom .triggers .stick {
-    left: 50% !important;
-    transform: translateX(-50%) !important; /* 縦移動だけに見せる */
+/* ▶ ステアリング用（左右）ポインター */
+.custom .sticks::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #fd1601;
+    border-radius: 50%;
+    top: 50%;
+    left: var(--stick-left, 50%);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 10;
 }
 
-.custom .sticks .stick {
-    top: 50% !important;
-    transform: translateY(-50%) !important; /* 横移動だけに見せる */
+/* ▶ スロットル用（上下）ポインター */
+.custom .triggers::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #fd1601;
+    border-radius: 50%;
+    left: 50%;
+    top: var(--stick-top, 50%);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 10;
 }
 
 .custom .bumper:after,
@@ -50,8 +71,7 @@
     transition: 5s all linear;
 }
 
-/* - END COMMON STUFF - */
-
+/* ステアリングボックス（左右） */
 .custom .sticks {
     width: 135px;
     height: 40px;
@@ -87,9 +107,10 @@
 }
 
 .custom .sticks:after {
-    content: none;
+    /* ポインター描画に置き換えたため、テキストは削除済 */
 }
 
+/* スロットルバー（上下） */
 .custom .triggers {
     width: 20px;
     height: 135px;
@@ -168,18 +189,4 @@
     right: 80px;
     top: 45px;
     width: 47px;
-}
-
-/* スロットル（上下動のみ許可） */
-.custom .triggers .stick {
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    top: var(--stick-top, 50%) !important;
-}
-
-/* ステアリング（左右動のみ許可） */
-.custom .sticks .stick {
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    left: var(--stick-left, 50%) !important;
 }
