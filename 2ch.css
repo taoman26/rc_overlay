@@ -14,6 +14,7 @@
     transition: none;
 }
 
+/* スティックの設定 */
 .custom .stick {
     width: 20px;
     height: 20px;
@@ -23,15 +24,32 @@
     border-radius: 10px;
 }
 
-/* ▼ スティック方向をCSSで制御 */
-.custom .triggers .stick {
-    left: 50% !important;
-    transform: translateX(-50%) !important; /* 縦移動だけに見せる */
+/* スロットルゲージのポインター設定 - 左側に配置 */
+.custom .triggers {
+    position: absolute;
+    left: 50px;
+    top: 42px;
 }
 
-.custom .sticks .stick {
+/* Y軸スティックのポインター位置設定 */
+.custom .triggers .stick.left {
+    left: 50% !important;
+    /* 縦方向の動きのみ許可、横方向は固定 */
+    /* スロットルにはスティックのY軸の動きを反映 */
+}
+
+/* ステアリングゲージのポインター設定 - 右側に配置 */
+.custom .sticks {
+    position: absolute;
+    right: 50px;
+    top: 100px;
+}
+
+/* X軸スティックのポインター位置設定 */
+.custom .sticks .stick.right {
     top: 50% !important;
-    transform: translateY(-50%) !important; /* 横移動だけに見せる */
+    /* 横方向の動きのみ許可、縦方向は固定 */
+    /* ステアリングにはスティックのX軸の動きを反映 */
 }
 
 .custom .bumper:after,
