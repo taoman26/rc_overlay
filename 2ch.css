@@ -169,3 +169,17 @@
     top: 45px;
     width: 47px;
 }
+
+/* スロットル（上下動のみ許可） */
+.custom .triggers .stick {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    top: var(--stick-top, 50%) !important;
+}
+
+/* ステアリング（左右動のみ許可） */
+.custom .sticks .stick {
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    left: var(--stick-left, 50%) !important;
+}
